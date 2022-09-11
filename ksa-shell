@@ -1,0 +1,251 @@
+#!/bin/bash
+
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+echo "Enter a choice"
+read c
+a=20
+b=20
+
+case $c in
+  1)echo "sum $((a + b))"  ;;
+  2)echo "subtraction $((a - b ))"  ;;
+  3)echo "multiplication $((a * b))" ;;
+  4)echo  "division $((a / b))"  ;;
+  *) echo "enter valid operation"
+esac
+
+
+#!/bin/bash
+echo "Enter fileanme"
+read file
+
+echo "file is $file"
+if [ -e $file ]
+then 
+ echo "file exists"
+else
+ echo "file non"
+fi
+
+if [ -r $file ]
+then 
+ echo "file has read permission"
+else
+ echo "file no read"
+fi
+
+if [ -w $file ]
+then 
+ echo "file has write permission"
+else
+ echo "file no write"
+fi
+
+if [ -x $file ]
+then 
+ echo "file has execute permission permission"
+else
+ echo "file no execute"
+fi
+
+if [ -L $file ]
+then 
+ echo "file symbolic"
+else
+ echo "file no symbolic"
+fi
+
+
+#!/bin/bash
+echo "enter choice"
+read n
+case $n in
+	1)pwd ;;
+	2)date ;;
+	3)ls ;;
+	*)echo "wrong choice" 
+esac 
+
+
+#!/bin/bash
+echo "Enter a number"
+read num
+
+fact=1
+
+while [ $num -gt 1 ]
+do
+  fact=$((fact * num))  #fact = fact * num
+  num=$((num - 1))      #num = num - 1
+done
+
+echo $fact
+
+
+#!/bin/bash
+
+grep -i $2 $1
+ if [$? -eq 0] 
+  then
+  echo "Pattern Found"
+   else 
+     echo "error"
+ fi
+ 
+
+if [$? -eq 1] 
+  then
+  echo "Pattern not Found"
+   else 
+     echo "error"
+ fi
+
+if [$? -eq 2] 
+  then
+  echo "file illa"
+   else 
+     echo "error"
+ fi
+ 
+
+!/bin/bash
+for x in $*
+do
+if [ -f $x ]
+then
+echo " $x is  a file "
+echo " no of lines in the file are "
+wc -l $x
+elif [ -d $x ]
+then
+echo " $x is  a directory "
+else
+echo " enter valid filename or directory name "
+fi
+done
+
+
+
+#!/bin/bash
+echo "The name of all files having all permissions :"
+  
+
+for file in *
+do
+
+
+if [ -f $file ]
+then
+  if [ -r $file -a -w $file -a -x $file ]
+    then
+      ls -l $file
+  fi
+
+
+fi
+
+done
+
+
+#!/bin/bash
+if [ $# -lt 1 ]
+ then
+ echo “ Check the arguments once”
+ exit
+fi
+
+echo “Enter a word”
+read word
+for file in $*
+do
+grep –iv “$word” $file | tee 1>/dev/null
+done
+echo “ lines containing given word are deleted”
+
+
+#!/bin/bash
+echo "Using for loop method # 2... "
+for (( i=1; i<=10; i++ ))
+do
+   echo -n "$i "
+done
+echo "Using while loop..."
+j=1
+while [ $j -le 10 ]
+do
+   echo -n "$j "
+   j=$(( j + 1 )) 
+done
+
+
+#1/bin/bash
+echo "Enter the number of N"
+read n
+sum=0
+for (( i=0; i<=n; i++ ))
+   do
+      sum=$((sum + i))
+   done
+echo "The sum of first N number is  $sum"
+
+
+file1=$1
+file2=$2
+file3=$3
+out="output.$$"
+count=0
+ 
+if [ $# -ne 3 ]
+then
+	echo "$(basename $0) file1 file2 file3"
+	exit 1
+fi
+ 
+if [ ! -f $file1 ] 
+then
+	echo "$file1 not a file!"
+	exit 2
+fi
+ 
+if [ ! -f $file2 ] 
+then
+	echo "$file2 not a file!"
+	exit 3
+fi
+
+if [ ! -f $file3 ] 
+then
+	echo "$file3 not a file!"
+	exit 4 
+fi
+ 
+cat $file1 $file2 $file3 >> $out
+count=$(cat $out | wc -w)
+echo "$count words written to $out"
+
+
+
+!/bin/bash
+echo "Enter a string:"
+read string
+len=`expr length "$string"`
+if [ $len -ge 5 ]
+then
+echo "String length is atleast 5"
+else
+echo "String length is not atleast 5"
+fi
+
+
+#!/bin/bash
+echo "File name:"
+read fname
+if [ -f $fname ]
+then
+tr '[:upper:]' '[:lower:]' < $fname | cat>newf.txt
+else
+echo "Not a file"
+fi
