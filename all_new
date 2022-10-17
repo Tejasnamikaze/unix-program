@@ -182,6 +182,27 @@ tr '[:upper:]' '[:lower:]' < $fname | cat>newf.txt
 else
 echo "Not a file"
 fi
+
+//14 find the no of vowels
+
+#!/bin/sh
+
+echo -n "Enter a line of text: "
+read string
+
+numCount=$(echo $string | grep -o "[0-9]" | wc --lines)
+vowCount=$(echo $string | grep -o -i "[aeiou]" | wc --lines)
+consCount=$(echo $string | grep -o -i "[bcdfghjklmnpqrstvwxyz]" | wc --lines)
+
+echo "The given string has $vowCount vowels, $consCount consonants and $numCount numbers in it."
+
+//15  max in an array
+max=${ar[0]}
+for n in "${ar[@]}" ; do
+    ((n > max)) && max=$n
+done
+echo $max
+
 //C PROGRAMS
 //1
 #include<sys/types.h>
