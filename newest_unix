@@ -105,7 +105,17 @@ for file in $*
 do
 grep –iv “$word” $file | tee 1> /dev/null //$ sed '/Unix/d' file
 done
+
+
 echo “ lines containing given word are deleted”
+echo "enter word to be deleted"
+read word
+echo "enter filename"
+read file
+grep -v $word $file > temp
+mv temp $file
+
+
 //9
 
 echo "Using for loop method # 2... "
