@@ -220,9 +220,14 @@ consCount=$(echo $string | grep -o -i "[bcdfghjklmnpqrstvwxyz]" | wc --lines)
 echo "The given string has $vowCount vowels, $consCount consonants and $numCount numbers in it."
 
 //15  max in an array
+arr=(1 2 3 4 5)
 max=${ar[0]}
-for n in "${ar[@]}" ; do
-    ((n > max)) && max=$n
+for n in "${ar[@]}" 
+do
+    if[ n -gt max ]
+     then
+      max=$n
+    fi
 done
 echo $max
 
