@@ -632,3 +632,31 @@ read(0,buffer,10);
 write(1,buffer,10);
 return 0;
 }
+
+//11 child executes factorial
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/wait.h>
+#include<sys/types.h>
+#include<signal.h>
+#include<stdlib.h>
+#include<fcntl.h>
+int main()
+{
+    int a=fork();
+    
+    if(a==0)
+    {
+        int f=1, n=10;
+	for(int i=1;<=n;i++)
+	{
+	 f=f*n;
+	 n=n-1;
+	 }
+    }
+    
+        
+    wait(NULL);
+    printf("fact=%d    ",f);
+    return 0;
+}
