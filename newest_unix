@@ -660,3 +660,40 @@ int main()
     printf("fact=%d    ",f);
     return 0;
 }
+
+
+//14 to create child process let the child process find prime numbers from 1 to 10 and the
+parent process to find the factorial of a number.
+
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/wait.h>
+#include<sys/types.h>
+#include<signal.h>
+#include<stdlib.h>
+#include<fcntl.h>
+int main()
+{
+    int a=fork();
+    
+    if(a>0)
+    {
+        int f=1, n=10;
+	for(int i=1;<=n;i++)
+	{
+	 f=f*n;
+	 n=n-1;
+	 }
+    }
+    if(a==0)
+    {
+      printf("1 3 5 7");
+      }
+        
+	 
+    
+        
+    wait(NULL);
+    printf("fact=%d    ",f);
+    return 0;
+}
