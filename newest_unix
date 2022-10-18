@@ -642,7 +642,53 @@ read(0,buffer,10);
 write(1,buffer,10);
 return 0;
 }
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<stdio.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<stdlib.h>
 
+int main(int argc,char *argv[] )
+{
+ int fd,i;
+ char buf[50];
+ fd= open(argv[1],O_RDWR);
+ while(i=read(0,buf,50))
+ {
+  write(fd,buf,50);
+  }
+  return 0;
+}
+//13
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<stdio.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+int main( int argc,char *argv[3] )
+{
+int fd,i;
+char buf[2];
+fd=open(argv[1],O_RDONLY,0777);
+if(fd==-argc)
+{
+printf("file open error");
+}
+else
+{
+lseek(fd,15,SEEK_SET);
+while((i=read(fd,buf,1))>0)
+{
+printf("%c",buf[0]);
+}
+close(fd);
+}
+}
 //11 child executes factorial
 #include<stdio.h>
 #include<unistd.h>
@@ -694,17 +740,28 @@ int main()
 	 f=f*n;
 	 n=n-1;
 	 }
+	    printf("fact=%d    ",f);
     }
     if(a==0)
     {
-      printf("1 3 5 7");
+      //printf("1 3 5 7");
+      int count=0;
+for(int j=1;j<=10;j++)
+{
+if(i%j==0)
+count=count+1;
+}
+if(count==2)
+printf("yes");
+else
+printf("no ");
       }
         
 	 
     
         
-    wait(NULL);
-    printf("fact=%d    ",f);
+   
+   
     return 0;
 }
 
