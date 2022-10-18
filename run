@@ -1,0 +1,9 @@
+gcc file.c
+./a.out
+chmod u + x 
+
+
+
+./file.sh
+chmod u+x file.sh
+./file.sh
